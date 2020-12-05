@@ -153,6 +153,12 @@ extension SignUpSecondViewController {
     func setupDatePicker() {
         birthDatePicker.addTarget(self, action: #selector(didDatePickerValueChanged(_:)), for: UIControl.Event.valueChanged)
         birthDatePicker.maximumDate = Date()
+        
+        if #available(iOS 14.0, *) {
+            birthDatePicker.preferredDatePickerStyle = .inline
+        } else if #available(iOS 13.4, *) {
+            birthDatePicker.preferredDatePickerStyle = .wheels
+        }
     }
     
     @objc func didDatePickerValueChanged(_ sender: UIDatePicker) {

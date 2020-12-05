@@ -186,6 +186,9 @@
                             </label>
                             <datePicker autoresizesSubviews="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="S02-WX-r8q">
                                 <rect key="frame" x="0.0" y="152" width="414" height="353.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="353.5" id="qBj-7T-HZO"/>
+                                </constraints>
                             </datePicker>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ekd-ew-Uk6">
                                 <rect key="frame" x="20" y="513.5" width="374" height="30"/>
