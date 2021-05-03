@@ -1,8 +1,8 @@
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FKyungminLeeDev%2FiOS_SignUp_Flow&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 
-# iOS SignUp Flow
+# 회원가입 화면
 - 개인정보를 입력받아 회원가입하는 절차 구현
-- 팀 프로젝트: `Jacob`, [`Glenn`](https://github.com/iluxsm), [팀 그라운드 룰](./GroundRule.md)
+- 팀 프로젝트: `Jacob`, [`Glenn`](https://github.com/iluxsm), [`팀 그라운드 룰`](./GroundRule.md)
 - 진척도: `😀😀😀😀`
 - 진행 기간: 2020.11.30~12.06 (1주)
 - 학습 Keyword: `Navigation Controller` `Text Field` `Text View` `Image Picker` `Date Picker` `Gesture Recognizer` `Singleton`
