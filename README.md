@@ -13,9 +13,8 @@
 | 기타 영역 터치시 키보드 내리기 | 입력 커서 이동 | 사진첩에서 프사 가져오기 |
 | :----------------: | :----------------------: | :----------------------: | 
 | ![](./Images/SignUpFlow_HideKeyboard.gif) | ![](./Images/SignUpFlow_MoveKeyboard.gif) | ![](./Images/SignUpFlow_SelectPhoto.gif) |
-| **정보 입력 확인** | **전화번호 확인** | **개인정보 입력 확인** |
-| :----------------: | :----------------------: | :----------------------: | 
-| ![](./Images/SignUpFlow_CheckInfo.gif) | ![](./Images/SignUpFlow_CheckPhoneNumber.gif) | ![](./Images/SignUpFlow_CheckInfo.gif) |
+| **개인 정보 입력 확인** | **전화번호 확인** | **개인 정보 입시 저장** |
+| ![](./Images/SignUpFlow_CheckInfo.gif) | ![](./Images/SignUpFlow_CheckPhoneNumber.gif) | ![](./Images/SignUpFlow_SaveTempData.gif) |
 
 <br><br><br>
 
