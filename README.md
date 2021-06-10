@@ -4,11 +4,11 @@
 
 ## 개요
 
-- 회원가입하는 절차와 화면 구현
-- 팀 프로젝트: `Jacob`, [`Glenn`](https://github.com/iluxsm),
-- 진행 기간: 2020.11.30~12.06 (1주)
-- 학습 Keyword: `Navigation Controller`, `Text Field`, `Text View`, `Image Picker`, `Date Picker`, `Gesture Recognizer`, `Singleton`
-- 기능
+| Demo | 개요 |
+| :--: | :--- |
+| ![](./Images/SignUpFlow_Demo.gif) | - 회원가입하는 절차와 화면 구현 <br> - 팀 프로젝트: `Jacob`, [`Glenn`](https://github.com/iluxsm) <br> - 진행 기간: 2020.11.30~12.06 (1주) <br> - 학습 Keyword <br>     `Navigation Controller`, `Text Field`, `Text View`, `Image Picker`, `Date Picker`, `Gesture Recognizer`, `Singleton`|
+
+### 기능
 
 | 기타 영역 터치시 키보드 내리기 | 입력 커서 이동 | 사진첩에서 프사 가져오기 |
 | :----------------: | :----------------------: | :----------------------: | 
