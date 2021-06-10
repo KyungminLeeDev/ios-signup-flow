@@ -4,17 +4,18 @@
 
 ## 개요
 
-| Demo | 개요 |
-| :--: | :--- |
-| ![](./Images/SignUpFlow_Demo.gif) | - 회원가입하는 절차와 화면 구현 <br> - 팀 프로젝트: `Jacob`, [`Glenn`](https://github.com/iluxsm) <br> - 진행 기간: 2020.11.30~12.06 (1주) <br> - 학습 Keyword <br>     `Navigation Controller`, `Text Field`, `Text View`, `Image Picker`, `Date Picker`, `Gesture Recognizer`, `Singleton`|
+| ![](./Images/SignUpFlow_Demo.gif) | - 회원가입하는 절차와 화면 구현 <br> - 팀 프로젝트: `Jacob`, [`Glenn`](https://github.com/iluxsm) <br> - 진행 기간: 2020.11.30~12.06 (1주) <br> - 학습 키워드: `Navigation Controller`, `Text Field`, `Text View`, `Image Picker`, `Date Picker`, `Gesture Recognizer`, `Singleton`|
+| :-: | :- |
+
+<br>
 
 ### 기능
 
-| 기타 영역 터치시 키보드 내리기 | 입력 커서 이동 | 사진첩에서 프사 가져오기 |
-| :----------------: | :----------------------: | :----------------------: | 
-| ![](./Images/SignUpFlow_HideKeyboard.gif) | ![](./Images/SignUpFlow_MoveKeyboard.gif) | ![](./Images/SignUpFlow_SelectPhoto.gif) |
-| **개인 정보 입력 확인** | **전화번호 확인** | **개인 정보 입시 저장** |
-| ![](./Images/SignUpFlow_CheckInfo.gif) | ![](./Images/SignUpFlow_CheckPhoneNumber.gif) | ![](./Images/SignUpFlow_SaveTempData.gif) |
+| 기타 영역 터치시 키보드 내리기 | 입력 커서 이동 | 사진첩에서 프사 가져오기 | 개인 정보 입력 확인 |
+| :-: | :-: | :-: | :-: | 
+| ![](./Images/SignUpFlow_HideKeyboard.gif) | ![](./Images/SignUpFlow_MoveKeyboard.gif) | ![](./Images/SignUpFlow_SelectPhoto.gif) | ![](./Images/SignUpFlow_CheckInfo.gif) |
+| **전화번호 확인** | **개인 정보 입시 저장** |
+| ![](./Images/SignUpFlow_CheckPhoneNumber.gif) | ![](./Images/SignUpFlow_SaveTempData.gif) |
 
 <br><br><br>
 
