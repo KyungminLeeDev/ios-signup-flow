@@ -2,12 +2,9 @@
 <!-- 뱃지 라인 -->
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FKyungminLeeDev%2FiOS_SignUp_Flow&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 
-## 개요
-
-| ![](./Images/SignUpFlow_Demo.gif) | - 회원가입하는 절차와 화면 구현 <br> - 팀 프로젝트: `Jacob`, [`Glenn`](https://github.com/iluxsm) <br> - 진행 기간: 2020.11.30~12.06 (1주) <br> - 학습 키워드: `Navigation Controller`, `Text Field`, `Text View`, `Image Picker`, `Date Picker`, `Gesture Recognizer`, `Singleton`|
+| 📺 데모 | 💡 개요 |
 | :-: | :- |
-
-<br>
+| <img src = ./Images/SignUpFlow_Demo.gif width="250px"> | 🚀 회원가입하는 절차와 화면 구현 <br> 🧑🏻‍💻 팀 프로젝트: `Jacob`, [`Glenn`](https://github.com/iluxsm) <br> 🗓 진행 기간: 2020.11.30 ~ 12.06 (1주) <br> ⚙️ 기능 <br> &nbsp;&nbsp;&nbsp;&nbsp; `기타 영역 터치 시 키보드 내리기` <br> &nbsp;&nbsp;&nbsp;&nbsp; `다음 텍스트필드로 커서 이동` <br> &nbsp;&nbsp;&nbsp;&nbsp; `사진첩에서 프사 가져오기` <br> &nbsp;&nbsp;&nbsp;&nbsp; `개인 정보 입력 확인` <br> &nbsp;&nbsp;&nbsp;&nbsp; `전화번호 확인` <br> &nbsp;&nbsp;&nbsp;&nbsp; `개인 정보 임시 저장` <br> 📝 학습 키워드 <br> &nbsp;&nbsp;&nbsp;&nbsp; `Navigation Controller` <br> &nbsp;&nbsp;&nbsp;&nbsp; `Text Field` <br> &nbsp;&nbsp;&nbsp;&nbsp; `Text View` <br> &nbsp;&nbsp;&nbsp;&nbsp; `Image Picker` <br> &nbsp;&nbsp;&nbsp;&nbsp; `Date Picker` <br> &nbsp;&nbsp;&nbsp;&nbsp; `Gesture Recognizer` <br> &nbsp;&nbsp;&nbsp;&nbsp; `Singleton` |
 
 ### 기능
 
