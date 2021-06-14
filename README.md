@@ -108,14 +108,14 @@ Git과 GitHub으로 협업하기 위환 최소한의 규칙을 정하고 지키�
 
 #### 잘한 점 
 
-- 매일 스크럼 시간에 함께 정한 목표를 지키기위해 노력했고, 모두 지킬 수 있었다.
-- 서로의 의견을 잘얘기하고 들을려고 노력했다.
+- 매일 스크럼 시간에 함께 정한 목표를 지키기 위해 노력했고, 모두 지킬 수 있었다.
+- 서로의 의견을 잘 얘기하고 들으려고 노력했다.
 - GitHub로 협업하려고 노력했다.
 
 #### 개선할 점 
 
 - 11부터 9시까지의 학습시간을 지키지 못하는 경우가 있었다.
-- 강의에 참여하기전에 예습을 많이하지 않았다. 예습을 제대로 하고 참여하면 더 얻어갈게 많았을 것 같다.
+- 강의에 참여하기 전에 예습을 많이 하지 않았다. 예습을 제대로 하고 참여하면 더 얻어 갈게 많았을 것 같다.
 
 #### 학습 키워드
 
@@ -147,9 +147,14 @@ Git과 GitHub으로 협업하기 위환 최소한의 규칙을 정하고 지키�
 
 | 기능 | 설명 |
 | ---- | ---- |
-| <img src = ./Images/SignUpFlow_HideKeyboard.gif width="250px"> <br> [👆목차로 가기](#목차) | **기타 영역 터치시 키보드 내리기** <br> 1. `Text Field`를 터치하면 문자 입력을 위한 키보드가 올라온다 <br> 2. `Text Field`외에 기타 영역을 터치하면 키보드가 내려간다 |
-| <img src = ./Images/SignUpFlow_MoveKeyboard.gif width="250px"> <br> [👆목차로 가기](#목차) | **다음 텍스트필드로 커서 이동** <br> 1. `Text Field`에 정보 입력 2. `Next`key를 누르면 다음 `Text Field`로 커서가 이동하여 입력을 계속할 수 있다  |
+| <img src = ./Images/SignUpFlow_HideKeyboard.gif width="250px"> | **기타 영역 터치시 키보드 내리기** <br><br> 1. `Text Field`를 터치하면 문자 입력을 위한 키보드가 올라온다 <br> 2. `Text Field`외에 기타 영역을 터치하면 키보드가 내려간다 |
+| <img src = ./Images/SignUpFlow_MoveKeyboard.gif width="250px"> | **다음 텍스트필드로 커서 이동** <br><br> 1. `Text Field`에 정보 입력 <br> 2. `Next`key를 누르면 다음 `Text Field`로 커서가 이동하여 입력을 계속할 수 있다 |
+| <img src = ./Images/SignUpFlow_SelectPhoto.gif width="250px"> | **사진첩에서 프로필 사진 가져오기** <br><br> 1. 프로필 사진 `Image View`를 터치하면 `Image Picker Controller`를 띄운다 <br> 2. 프로필 사진으로 가져올 사진을 선택한다 <br> 3. 사진의 크기 및 위치를 조절한다 <br> 4. `Choose`를 누르면 편집된 프로필 사진이 `Image View`에 보인다 |
 
+
+
+[👆목차로 가기](#목차)
+<br><br><br>
 
 ## 학습 내용
 
