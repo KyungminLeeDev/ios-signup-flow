@@ -3,16 +3,8 @@
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FKyungminLeeDev%2FiOS_SignUp_Flow&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 
 | 📺 데모 | 💡 개요 |
-| :-: | :- |
+| ------- | ------- |
 | <img src = ./Images/SignUpFlow_Demo.gif width="250px"> | 🚀 회원가입하는 절차와 화면 구현 <br> 🧑🏻‍💻 팀 프로젝트: `Jacob`, [`Glenn`](https://github.com/iluxsm) <br> 🗓 진행 기간: 2020.11.30 ~ 12.06 (1주) <br> ⚙️ 기능 <br> &nbsp;&nbsp;&nbsp;&nbsp; `기타 영역 터치 시 키보드 내리기` <br> &nbsp;&nbsp;&nbsp;&nbsp; `다음 텍스트필드로 커서 이동` <br> &nbsp;&nbsp;&nbsp;&nbsp; `사진첩에서 프사 가져오기` <br> &nbsp;&nbsp;&nbsp;&nbsp; `개인 정보 입력 확인` <br> &nbsp;&nbsp;&nbsp;&nbsp; `전화번호 확인` <br> &nbsp;&nbsp;&nbsp;&nbsp; `개인 정보 임시 저장` <br> 📝 학습 키워드 <br> &nbsp;&nbsp;&nbsp;&nbsp; `Navigation Controller` <br> &nbsp;&nbsp;&nbsp;&nbsp; `Text Field` <br> &nbsp;&nbsp;&nbsp;&nbsp; `Text View` <br> &nbsp;&nbsp;&nbsp;&nbsp; `Image Picker` <br> &nbsp;&nbsp;&nbsp;&nbsp; `Date Picker` <br> &nbsp;&nbsp;&nbsp;&nbsp; `Gesture Recognizer` <br> &nbsp;&nbsp;&nbsp;&nbsp; `Singleton` |
-
-### 기능
-
-| 기타 영역 터치시 키보드 내리기 | 입력 커서 이동 | 사진첩에서 프사 가져오기 | 개인 정보 입력 확인 |
-| :-: | :-: | :-: | :-: | 
-| ![](./Images/SignUpFlow_HideKeyboard.gif) | ![](./Images/SignUpFlow_MoveKeyboard.gif) | ![](./Images/SignUpFlow_SelectPhoto.gif) | ![](./Images/SignUpFlow_CheckInfo.gif) |
-| **전화번호 확인** | **개인 정보 입시 저장** |
-| ![](./Images/SignUpFlow_CheckPhoneNumber.gif) | ![](./Images/SignUpFlow_SaveTempData.gif) |
 
 <br><br><br>
 
@@ -23,10 +15,11 @@
     - [Git & GitHub으로 협업하기](#Git--GitHub으로-협업하기)
     - [팀 그라운드 룰](#팀-그라운드-룰)
     - [TWL](#This-week-We-Learned)
-2. [학습 내용](#1-학습-내용)
-3. [배운 내용](#2-배운-내용)
-4. [고민한 내용](#3-고민한-내용)
-5. [개선하고 싶은 내용](#4-개선하고-싶은-내용)
+2. [기능](#기능)
+3. [학습 내용](#1-학습-내용)
+4. [배운 내용](#2-배운-내용)
+5. [고민한 내용](#3-고민한-내용)
+6. [개선하고 싶은 내용](#4-개선하고-싶은-내용)
 
 <br><br><br>
 
@@ -39,8 +32,15 @@
 ### 팀원과 역할 분배
 
 - `Jacob`, [`Glenn`](https://github.com/iluxsm)
+- **역할을 나누지 않고 각자의 방법대로 구현한 후, 리뷰를 통해 더 나은 코드로 통합하기**  
+    프로젝트 진행 방식에 대해 논의한 결과, 빠른 기능 구현보다는 iOS의 많은 것을 직접 구현해보고 서로 비교하여 더 나은 방식으로 통합하는 것이 좋다고 판단했다.
 
 ### Git & GitHub으로 협업하기
+
+Git과 GitHub으로 협업하기 위환 최소한의 규칙을 정하고 지키기 위해 노력하기로 했다.  
+- 각자 구현하기로한 부분이 완료되면 PR을 통해 리뷰하고 머지하기
+- 팀 그라운드 룰로 정한 규칙 위주로 점검하고 의견 말하기
+
 
 [👆목차로 가기](#목차)
 <br><br><br>
@@ -136,6 +136,20 @@
 
 [👆목차로 가기](#목차)
 <br><br><br>
+
+## 기능
+
+<!-- | 기타 영역 터치시 키보드 내리기 | 입력 커서 이동 | 사진첩에서 프사 가져오기 | 개인 정보 입력 확인 |
+| :-: | :-: | :-: | :-: | 
+| ![](./Images/SignUpFlow_HideKeyboard.gif) | ![](./Images/SignUpFlow_MoveKeyboard.gif) | ![](./Images/SignUpFlow_SelectPhoto.gif) | ![](./Images/SignUpFlow_CheckInfo.gif) |
+| **전화번호 확인** | **개인 정보 입시 저장** |
+| ![](./Images/SignUpFlow_CheckPhoneNumber.gif) | ![](./Images/SignUpFlow_SaveTempData.gif) | -->
+
+| 기능 | 설명 |
+| ---- | ---- |
+| <img src = ./Images/SignUpFlow_HideKeyboard.gif width="250px"> <br> [👆목차로 가기](#목차) | **기타 영역 터치시 키보드 내리기** <br> 1. `Text Field`를 터치하면 문자 입력을 위한 키보드가 올라온다 <br> 2. `Text Field`외에 기타 영역을 터치하면 키보드가 내려간다 |
+| <img src = ./Images/SignUpFlow_MoveKeyboard.gif width="250px"> <br> [👆목차로 가기](#목차) | **다음 텍스트필드로 커서 이동** <br> 1. `Text Field`에 정보 입력 2. `Next`key를 누르면 다음 `Text Field`로 커서가 이동하여 입력을 계속할 수 있다  |
+
 
 ## 학습 내용
 
