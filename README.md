@@ -139,17 +139,14 @@ Git과 GitHub으로 협업하기 위환 최소한의 규칙을 정하고 지키�
 
 ## 기능
 
-<!-- | 기타 영역 터치시 키보드 내리기 | 입력 커서 이동 | 사진첩에서 프사 가져오기 | 개인 정보 입력 확인 |
-| :-: | :-: | :-: | :-: | 
-| ![](./Images/SignUpFlow_HideKeyboard.gif) | ![](./Images/SignUpFlow_MoveKeyboard.gif) | ![](./Images/SignUpFlow_SelectPhoto.gif) | ![](./Images/SignUpFlow_CheckInfo.gif) |
-| **전화번호 확인** | **개인 정보 입시 저장** |
-| ![](./Images/SignUpFlow_CheckPhoneNumber.gif) | ![](./Images/SignUpFlow_SaveTempData.gif) | -->
-
-| 기능 | 설명 |
-| ---- | ---- |
+| 📺 데모 |  🗓 기능 설명 |
+| ------- | ------------- |
 | <img src = ./Images/SignUpFlow_HideKeyboard.gif width="250px"> | **기타 영역 터치시 키보드 내리기** <br><br> 1. `Text Field`를 터치하면 문자 입력을 위한 키보드가 올라온다 <br> 2. `Text Field`외에 기타 영역을 터치하면 키보드가 내려간다 |
-| <img src = ./Images/SignUpFlow_MoveKeyboard.gif width="250px"> | **다음 텍스트필드로 커서 이동** <br><br> 1. `Text Field`에 정보 입력 <br> 2. `Next`key를 누르면 다음 `Text Field`로 커서가 이동하여 입력을 계속할 수 있다 |
+| <img src = ./Images/SignUpFlow_MoveKeyboard.gif width="250px"> | **다음 텍스트필드로 커서 이동** <br><br> 1. `Text Field`에 정보 입력 <br> 2. `Next`키를 누르면 다음 `Text Field`로 커서가 이동하여 입력을 계속할 수 있다 |
 | <img src = ./Images/SignUpFlow_SelectPhoto.gif width="250px"> | **사진첩에서 프로필 사진 가져오기** <br><br> 1. 프로필 사진 `Image View`를 터치하면 `Image Picker Controller`를 띄운다 <br> 2. 프로필 사진으로 가져올 사진을 선택한다 <br> 3. 사진의 크기 및 위치를 조절한다 <br> 4. `Choose`를 누르면 편집된 프로필 사진이 `Image View`에 보인다 |
+| <img src = ./Images/SignUpFlow_CheckInfo.gif width="250px"> | **개인 정보 입력 확인** <br><br> 1. `다음 버튼`은 기본적으로 비활성화 <br> 2. 회원가입을 위한 모든 정보가 입력됐고, 비밀번호가 동일하면 `다음 버튼` 활성화 |
+| <img src = ./Images/SignUpFlow_CheckPhoneNumber.gif width="250px"> | **전화번호 확인** <br><br> 1. 입력한 전화번호가 규칙에 맞는지 확인 <br> 2. 일치하면 키보드 내리기 <br> 3. 일치하지 않으면 에러 표시하여 수정하도록 유도 | 
+| <img src = ./Images/SignUpFlow_SaveTempData.gif width="250px"> | **개인 정보 임시 저장** <br><br> 이전 화면으로 돌아가도 현재 화면의 정보가 지워지지 않고 임시로 유지됨 |
 
 
 
