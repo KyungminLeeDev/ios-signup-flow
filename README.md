@@ -11,15 +11,29 @@
 ## 목차
 
 1. [프로젝트](#프로젝트)
+    - [기능](#기능)
     - [팀원과 역할 분배](#팀원과-역할-분배)
     - [Git & GitHub으로 협업하기](#Git--GitHub으로-협업하기)
     - [팀 그라운드 룰](#팀-그라운드-룰)
     - [TWL](#This-week-We-Learned)
-2. [기능](#기능)
-3. [학습 내용](#1-학습-내용)
-4. [배운 내용](#2-배운-내용)
-5. [고민한 내용](#3-고민한-내용)
-6. [개선하고 싶은 내용](#4-개선하고-싶은-내용)
+2. [학습 내용](#1-학습-내용)
+    - [싱글턴 패턴으로 데이터 공유](#싱글턴-패턴으로-데이터-공유)
+    - [Image View 터치 시 Image Picker 띄우기](#Image-View-터치-시-Image-Picker-띄우기)
+    - [Image Picker Controller로 사진첩에서 사진 가져오기](#Image-Picker-Controller로-사진첩에서-사진-가져오기)
+    - [Date Picker로 날짜 정보 가져오기](#Date-Picker로-날짜-정보-가져오기)
+    - [Segue로 모달 화면 띄우기](#Segue로-모달-화면-띄우기)
+    - [Navigaion Controller 추가하기](#Navigaion-Controller-추가하기)
+3. [배운 내용](#2-배운-내용)
+    - 키보드 넘버패드일때 악세서리뷰로 done버튼 만들기
+    - if vs guard
+    - 코드의 공백이나 개행에도 의미가 있어야 한다
+4. [고민한 내용](#3-고민한-내용)
+    - 모달 vs 내비게이션
+    - 키보드 내리는 방법 선택
+    - 싱글턴의 인스턴스 이름
+5. 트러블 슈팅
+    - 텍스트필드 권장 암호?!
+
 
 <br><br><br>
 
@@ -28,6 +42,22 @@
 
 - 회원가입하는 절차와 화면 구현
 - 진행 기간: 2020.11.30~12.06 (1주)
+
+### 기능
+
+| 📺 데모 |  🗓 기능 |
+| ------- | -------- |
+| <img src = ./Images/SignUpFlow_HideKeyboard.gif width="250px"> | **기타 영역 터치시 키보드 내리기** <br><br> 1. `Text Field`를 터치하면 문자 입력을 위한 키보드가 올라온다 <br> 2. `Text Field`외에 기타 영역을 터치하면 키보드가 내려간다 |
+| <img src = ./Images/SignUpFlow_MoveKeyboard.gif width="250px"> | **다음 텍스트필드로 커서 이동** <br><br> 1. `Text Field`에 정보 입력 <br> 2. `Next`키를 누르면 다음 `Text Field`로 커서가 이동하여 입력을 계속할 수 있다 |
+| <img src = ./Images/SignUpFlow_SelectPhoto.gif width="250px"> | **사진첩에서 프로필 사진 가져오기** <br><br> 1. 프로필 사진 `Image View`를 터치하면 `Image Picker Controller`를 띄운다 <br> 2. 프로필 사진으로 가져올 사진을 선택한다 <br> 3. 사진의 크기 및 위치를 조절한다 <br> 4. `Choose`를 누르면 편집된 프로필 사진이 `Image View`에 보인다 |
+| <img src = ./Images/SignUpFlow_CheckInfo.gif width="250px"> | **개인 정보 입력 확인** <br><br> 1. `다음 버튼`은 기본적으로 비활성화 <br> 2. 회원가입을 위한 모든 정보가 입력됐고, 비밀번호가 동일하면 `다음 버튼` 활성화 |
+| <img src = ./Images/SignUpFlow_CheckPhoneNumber.gif width="250px"> | **전화번호 확인** <br><br> 1. 입력한 전화번호가 규칙에 맞는지 확인 <br> 2. 일치하면 키보드 내리기 <br> 3. 일치하지 않으면 에러 표시하여 수정하도록 유도 | 
+| <img src = ./Images/SignUpFlow_SaveTempData.gif width="250px"> | **개인 정보 임시 저장** <br><br> 이전 화면으로 돌아가도 현재 화면의 정보가 지워지지 않고 임시로 유지됨 |
+
+[👆목차로 가기](#목차)
+<br><br><br>
+
+
 
 ### 팀원과 역할 분배
 
@@ -132,39 +162,162 @@ Git과 GitHub으로 협업하기 위환 최소한의 규칙을 정하고 지키�
 
 - Glenn이 Jacob에게: 팀원을 배려해 주는 모습과 항상 차분하고 침착하게 문제를 해결해 나가는 모습을 보고 많은 걸 느꼈어요. 그리고 코드를 작성할 때 생각이 미치지 못하는 부분을 세세하게 체크해 줬고, 스스로에게 왜 이걸 이렇게 썼을까라는 질문을 자주 하게 만들어 줬어요. 감사합니다.
 
-
-
 [👆목차로 가기](#목차)
 <br><br><br>
 
-## 기능
 
-| 📺 데모 |  🗓 기능 설명 |
-| ------- | ------------- |
-| <img src = ./Images/SignUpFlow_HideKeyboard.gif width="250px"> | **기타 영역 터치시 키보드 내리기** <br><br> 1. `Text Field`를 터치하면 문자 입력을 위한 키보드가 올라온다 <br> 2. `Text Field`외에 기타 영역을 터치하면 키보드가 내려간다 |
-| <img src = ./Images/SignUpFlow_MoveKeyboard.gif width="250px"> | **다음 텍스트필드로 커서 이동** <br><br> 1. `Text Field`에 정보 입력 <br> 2. `Next`키를 누르면 다음 `Text Field`로 커서가 이동하여 입력을 계속할 수 있다 |
-| <img src = ./Images/SignUpFlow_SelectPhoto.gif width="250px"> | **사진첩에서 프로필 사진 가져오기** <br><br> 1. 프로필 사진 `Image View`를 터치하면 `Image Picker Controller`를 띄운다 <br> 2. 프로필 사진으로 가져올 사진을 선택한다 <br> 3. 사진의 크기 및 위치를 조절한다 <br> 4. `Choose`를 누르면 편집된 프로필 사진이 `Image View`에 보인다 |
-| <img src = ./Images/SignUpFlow_CheckInfo.gif width="250px"> | **개인 정보 입력 확인** <br><br> 1. `다음 버튼`은 기본적으로 비활성화 <br> 2. 회원가입을 위한 모든 정보가 입력됐고, 비밀번호가 동일하면 `다음 버튼` 활성화 |
-| <img src = ./Images/SignUpFlow_CheckPhoneNumber.gif width="250px"> | **전화번호 확인** <br><br> 1. 입력한 전화번호가 규칙에 맞는지 확인 <br> 2. 일치하면 키보드 내리기 <br> 3. 일치하지 않으면 에러 표시하여 수정하도록 유도 | 
-| <img src = ./Images/SignUpFlow_SaveTempData.gif width="250px"> | **개인 정보 임시 저장** <br><br> 이전 화면으로 돌아가도 현재 화면의 정보가 지워지지 않고 임시로 유지됨 |
-
-
-
-[👆목차로 가기](#목차)
-<br><br><br>
 
 ## 학습 내용
 
+### 싱글턴 패턴으로 데이터 공유
+
+회원가입 절차가 여러 화면으로 이루어져 있어서 화면 전환 시에도 이미 입력한 사용자 정보를 저장할 타입이 필요했다.  
+이를 위해 사용자 정보 저장 용도의 객체를 싱글턴 패턴으로 만들어서 하나의 인스턴스를 공용으로 사용하게 구현했다.
+
+#### 싱글턴 패턴 구현
+
+~~~swift
+class UserInformation {
+    static let card = UserInformation()
+
+    var id: String?
+    var password: String?
+    ...
+
+
+    private init() {}
+}
+~~~
+
+싱글턴 패턴은 하나의 인스턴스를 보장해야하므로 인스턴스를 생성할수 없도록 생성자에 private 접근제한을 건다.  
+  
+싱글터 인스턴스는 `UserInformation.card`로 접근할 수 있으며, static 이므로 최초 접근 시에 인스턴스가 생성되며 이후에는 생성된 인스턴스를 제공한다.
+
+[👆목차로 가기](#목차)
+<br><br><br>
+
+
+
+### Image View 터치 시 Image Picker 띄우기
+
+프로필 사진 이미지 뷰를 터치하면 이미지 피커를 띄워서 사진을 선택하는 기능을 구현하려 한다.  
+이미지 뷰는 버튼과 다르게 터치 액션을 만들 수 없다.  
+  
+이미지 뷰의 터치를 인식해서 특정 메서드가 실행되도록 `UITapGestureRecognizer`를 사용해서 구현했다.
+
+#### 프로필 이미지 뷰에 탭 제스처 등록하기
+
+탭 제스처가 인식되면 `showImagePicker()`가 호출되는 `UITapGestureRecognizer`를 Target-Action 패턴으로 생성하고 프로필 이미지 뷰의 Gesture Recognizer에 추가한다.
+
+~~~swift
+let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showImagePicker))
+profileImage.addGestureRecognizer(tapGesture)
+profileImage.isUserInteractionEnabled = true
+~~~
+
+#### 이미지 피커 컨트롤러 띄우기
+
+위에서 탭 제스처 인식기에 등록한 메서드를 구현한다.  
+Target-Action 패턴으로 액션 메서드를 등록하려면 메서드에 `@objc` 를 붙여야 한다.  
+  
+이제 이미지 뷰를 터치하면 이 메서드가 호출되어 이미지 피커 컨트롤러를 present 한다.
+
+~~~swift
+@objc private func showImagePicker() {
+    imagePickerController.sourceType = UIImagePickerController.SourceType.savedPhotosAlbum
+    imagePickerController.allowsEditing = true
+    
+    self.present(imagePickerController, animated: true, completion: nil)
+}
+~~~
+
+[👆목차로 가기](#목차)
+<br><br><br>
+
+
+
+### Image Picker Controller로 사진첩에서 사진 가져오기
+
+이미지 피커에서 이미지를 선택하면, 이미지를 가져오고 이미지 피커 화면을 내리기 위해 `UIImagePickerControllerDelegate`의 `imagePickerController(_:didFinishPickingMediaWithInfo:)` 메서드를 사용한다.  
+이 메서드는 이미지 피커에서 이미지 선택이 완료되면 호출되는 델리게이트 메서드다.  
+  
+선택한 이미지 원본이 아닌 편집된 사진을 가져오기위해 `info[UIImagePickerController.InfoKey.editedImage]`로 접근한다.  
+사진을 이미지 뷰로 가져왔으면 `dismiss`로 이미지 피커 컨트롤러 화면을 내린다.
+
+
+~~~swift
+func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    if let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+        profileImage.image = selectedImage
+    }
+    
+    dismiss(animated: true, completion: nil)
+}
+~~~
+
+[👆목차로 가기](#목차)
+<br><br><br>
+
+
+
+### Date Picker로 날짜 정보 가져오기
+
+Date Picker로 날짜를 선택할 때 마다 바로 날짜 정보를 가져와서 반영하기 위해 
+Target-Action 패턴으로 Date Picker의 값이 변경될 때 마다 `didDatePickerValueChanged()`가 호출되도록 등록한다.  
+  
+~~~swift
+func setupDatePicker() {
+    birthDatePicker.addTarget(self, action: #selector(didDatePickerValueChanged(_:)), for: UIControl.Event.valueChanged)
+    birthDatePicker.maximumDate = Date()
+}
+~~~
+
+생년월일을 적는 곳이므로 오늘 날짜를 최댓값으로 등록한다.
+
+~~~swift
+@objc func didDatePickerValueChanged(_ sender: UIDatePicker) {
+    updateDateLabelFromDatePicker(sender)
+}
+~~~
+
+Date Picker로 선태한 Date 타입의 날짜정보를 dateFormatter를 이용해 String 타입으로 변환하여 Label에 표시해준다.
+
+~~~swift
+func updateDateLabelFromDatePicker(_ sender: UIDatePicker) {
+    let dateString: String = dateFormatter.string(from: sender.date)
+    birthDateLabel.text = dateString
+}
+~~~
+
+[👆목차로 가기](#목차)
+<br><br><br>
+
+
+### Segue로 모달 화면 띄우기
+
+`Sign Up` 버튼을 누르면 회원가입을 화면을 모달로 띄웠다.  
+  
+스토리보드의 `Sign Up`버튼을 누르고 `control`버튼을 누른채로 띄우려는 화면으로 드래그 앤 드랍하여 Action Segue 등록 창에서 Present Modally를 선택하면 연결된다.  
+  
+여기서는 내비게이션 컨트롤러 자체를 모달로 띄웠다.  
+
+<img src = ./Images/Segue_PresentModally.png width="600px">
+
+[👆목차로 가기](#목차)
+<br><br><br>
+
+
+
+### Navigaion Controller 추가하기
+
+스토리보드에서 Navigaion Controller를 추가하려는 View Controller을 선택한 후 메뉴바의 Editor -> Embed In -> Navigation Controller을 선택하면 추가된다.
+
+<img src = ./Images/EmbedIn_NavigationController.png width="600px">
+
+[👆목차로 가기](#목차)
+<br><br><br>
 
 ## 배운 내용
 
 
 ## 고민한 내용
-
-
-## 개선하고 싶은 내용
-
-
-
-[👆목차로 가기](#목차)
-<br><br><br>
