@@ -349,6 +349,13 @@ func updateDateLabelFromDatePicker(_ sender: UIDatePicker) {
 
     나는 로직상 잘못된 부분이나 미리 걸러야 하는 부분에 guard를 사용한다는 나름이 규칙을 정했지만,
     이것을 지키려다 보니 가독성을 해치는 경우를 발견할 수 있었다.
+- 공식문서 확인 
+    [Swift Language Guide - Control Flow](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 문서의 `Early Exit` 토픽에서 guard 사용 관련 내용을 확인할 수 있다.
+    > Using a guard statement for requirements improves the readability of your code, compared to doing the same check with an if statement. It lets you write the code that’s typically executed without wrapping it in an else block, and it lets you keep the code that handles a violated requirement next to the requirement.  
+      
+    조건문에 guard를 사용하면 일반적으로 실행되는 코드를 블록으로 감싸지 않고 사용할 수 있고, 조건을 위반하는 경우를 처리하는 코드를 조건문 옆에 둘 수 있으므로 가독성이 향상될 수 있다는 내용이다.  
+      
+    이번 경우와는 결이 살짝 다르게 느껴지지만, guard를 사용하는 것이 if 보다 가독성이 좋게 만드는 경우가 있다는 것을 배웠다.
 
 
 
