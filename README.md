@@ -321,65 +321,67 @@ func updateDateLabelFromDatePicker(_ sender: UIDatePicker) {
 
 ### if vs guard
 
-- 배경  
-    Swift의 조건문에는 다른 언어와 다르게 `if`에 더해서 `guard`가 있고, if or guard를 선택하는 나의 기준이 있었다. 
-    `guard`라는 명칭이 방어하고 미리 막는 느낌이 강해서, 로직상 잘못된 부분이나 미리 걸러야 하는 것을 처리할 때 guard를 주로 사용했다.
-- [코드 리뷰 코멘트](https://github.com/yagom-academy/ios-signup-flow/pull/26/files/56489274eea82e0135abe4be2d276a6eb88f91cd#r535812747)  
-    코드 리뷰에서 아래 코멘트를 받고 어떤 상황에서 if 또는 guard를 사용할지 다시 생각해 보았다.  
-    ![](./Images/CodeReview_IfGuard.png)
-- 개선  
-    수정한 코드 예시
-    ~~~swift
-    private var isValidProfileImage: Bool {
-        if let _ = profileImage.image {
-            return true
-        } else {
-            return false
-        }
-    }
-    ~~~
+#### - 배경
 
-    [피드백 코멘트](https://github.com/yagom-academy/ios-signup-flow/pull/26#issuecomment-738673080)  
-    ![](./Images/CodeReview_IfGuard_Answer.png)
-- 배운 점  
-    if or guard 선택할 때, 만약 회사나 팀에 규칙 있다면 그 기준을 지키면 될 것이다.
-    하지만 규칙이 없다면 개인의 규칙을 만들어야 할 것이고,  
-    초심자에게 그 기준은 코드가 좀 더 자연스럽게 읽힐 수 있는 방향으로 하는 것이 좋을 것 같다. 
+Swift의 조건문에는 다른 언어와 다르게 `if`에 더해서 `guard`가 있고, if or guard를 선택하는 나의 기준이 있었다.  
+`guard`라는 명칭이 방어하고 미리 막는 느낌이 강해서, 로직상 잘못된 부분이나 미리 걸러야 하는 것을 처리할 때 guard를 주로 사용했다.
 
-    나는 로직상 잘못된 부분이나 미리 걸러야 하는 부분에 guard를 사용한다는 나름이 규칙을 정했지만,
-    이것을 지키려다 보니 가독성을 해치는 경우를 발견할 수 있었다.
+#### - 코드 리뷰 [코멘트](https://github.com/yagom-academy/ios-signup-flow/pull/26/files/56489274eea82e0135abe4be2d276a6eb88f91cd#r535812747)  
 
-    예를 들면 조건문의 결과가 주로 false가 되는 상황이라면 guard가 더 이해하기 어렵다.  
-    guard에는 true 조건을 작성해야하기에 이를 맞추기려면 Bool값을 반전해서 한번 더 생각하기에 그렇다.  
+코드 리뷰에서 아래 코멘트를 받고 어떤 상황에서 if 또는 guard를 사용할지 다시 생각해 보았다.  
+![](./Images/CodeReview_IfGuard.png)
 
-    ~~~swift
-    // if-else
-    // 패스워드가 비어있다면 false
-    if password.isEmpty  { 
-        return false
-    } else {
+#### - 개선  
+
+수정한 코드 예시
+~~~swift
+private var isValidProfileImage: Bool {
+    if let _ = profileImage.image {
         return true
-    }
-
-    // guard-else
-    // 패스워드가 비어있지 않다면?! false
-    guard !password.isEmpty else {
+    } else {
         return false
     }
+}
+~~~
+
+[피드백 코멘트](https://github.com/yagom-academy/ios-signup-flow/pull/26#issuecomment-738673080)  
+![](./Images/CodeReview_IfGuard_Answer.png)
+
+#### - 배운 점  
+if or guard 선택할 때, 만약 회사나 팀에 규칙 있다면 그 기준을 지키면 될 것이다.  
+하지만 규칙이 없다면 개인의 규칙을 만들어야 할 것이고,  
+초심자에게 그 기준은 코드가 좀 더 자연스럽게 읽힐 수 있는 방향으로 하는 것이 좋을 것 같다.  
+나는 로직상 잘못된 부분이나 미리 걸러야 하는 부분에 guard를 사용한다는 나름이 규칙을 정했지만,  
+이것을 지키려다 보니 가독성을 해치는 경우를 발견할 수 있었다.  
+예를 들면 조건문의 결과가 주로 false가 되는 상황이라면 guard가 더 이해하기 어렵다.  
+guard에는 true 조건을 작성해야하기에 이를 맞추기려면 Bool값을 반전해서 한번 더 생각하기에 그렇다.  
+
+~~~swift
+// if-else
+// 패스워드가 비어있다면 false
+if password.isEmpty  { 
+    return false
+} else {
     return true
-    ~~~
+}
+// guard-else
+// 패스워드가 비어있지 않다면?! false
+guard !password.isEmpty else {
+    return false
+}
+return true
+~~~
 
-    guard를 사용한다면 `password.isEmpty`를 한번 뒤집어야 하니 제대로 이해하기 위해 한번 더 생각해야하고, 이부분에서 실수했던 기억이 있다.
+guard를 사용한다면 `password.isEmpty`를 한번 뒤집어야 하니 제대로 이해하기 위해 한번 더 생각해야하고, 이부분에서 실수했던 기억이있다.
 
-- 공식문서 확인  
-    [Swift Language Guide - Control Flow](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 문서의 `Early Exit` 토픽에서 guard 사용 관련 내용을 확인할 수 있다.
-    > Using a guard statement for requirements improves the readability of your code, compared to doing the same check with an if statement. It lets you write the code that’s typically executed without wrapping it in an else block, and it lets you keep the code that handles a violated requirement next to the requirement.  
-      
-    조건문에 guard를 사용하면 일반적으로 실행되는 코드를 블록으로 감싸지 않고 사용할 수 있고, 조건을 위반하는 경우를 처리하는 코드를 조건문 옆에 둘 수 있으므로 가독성이 향상될 수 있다는 내용이다.  
-      
-    이번 경우와는 결이 살짝 다르게 느껴지지만, guard를 사용하는 것이 if 보다 가독성이 좋게 만드는 경우가 있다는 것을 배웠다.
+#### - 공식문서 확인
 
-
+[Swift Language Guide - Control Flow](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 문서의 `Early Exit`토픽에서 guard 사용 관련 내용을 확인할 수 있다.
+> Using a guard statement for requirements improves the readability of your code, compared to doing the same check with an ifstatement. It lets you write the code that’s typically executed without wrapping it in an else block, and it lets you keep thecode that handles a violated requirement next to the requirement.  
+  
+조건문에 guard를 사용하면 일반적으로 실행되는 코드를 블록으로 감싸지 않고 사용할 수 있고, 조건을 위반하는 경우를 처리하는 코드를조건문 옆에 둘 수 있으므로 가독성이 향상될 수 있다는 내용이다.  
+  
+이번 경우와는 결이 살짝 다르게 느껴지지만, guard를 사용하는 것이 if 보다 가독성이 좋게 만드는 경우가 있다는 것을 배웠다.
 
 [👆목차로 가기](#목차)
 <br><br><br>
@@ -394,23 +396,23 @@ func updateDateLabelFromDatePicker(_ sender: UIDatePicker) {
 
 먼저 H.I.G 문서를 통해 모달과 내비게이션에 대해 알아보았다.
 
-#### [H.I.G - Modality](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/modality/)
+#### - H.I.G - [Modality](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/modality/)
 
 > Modality is a design technique that presents content in a temporary mode that’s separate from the user's previous current context and requires an explicit action to exit. Presenting content modally can:
-- Help people focus on a self-contained task or set of closely related options
-- Ensure that people receive and, if necessary, act on critical information
+> - Help people focus on a self-contained task or set of closely related options
+> - Ensure that people receive and, if necessary, act on critical information
 
 모달은 이전의 컨텍스트와는 별개로 임시적인 컨텐츠를 보여줄때 사용하는 방법이라고 해석된다. 
 즉, 현재의 맥락과는 다르게 일시적으로 사용자의 주의를 끌어서 스스로 작업해야하는 컨텐츠를 보여줄대 사용되는 것 같다.
 
-#### [H.I.G - Navigation](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/navigation/)
+#### - H.I.G - [Navigation](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/navigation/)
 
 > People tend to be unaware of an app’s navigation until it doesn’t meet their expectations. Your job is to implement navigation in a way that supports the structure and purpose of your app without calling attention to itself. Navigation should feel natural and familiar, and shouldn’t dominate the interface or draw focus away from content. In iOS, there are three main styles of navigation.
 
 사용자가 자연스럽게 앱의 컨텐츠 흐름을 느끼도록 내비게이션 되야 한다고 설명하고 있다.
-즉, 앱의 구조에 맞게 컨텐츠의 맥락에 따라 더 깊은 컨텐츠 화면으로 들어가거나 나오는게 자연스럽게 이어저야 한다는 것이다.
+앱의 구조에 맞게 컨텐츠의 맥락에 따라 더 깊은 컨텐츠 화면으로 들어가거나 나오는게 자연스럽게 이어저야 한다.
 
-#### 고민
+#### - 고민한 접
 
 1. 로그인 화면에서 회원가입 화면으로 이동은?  
     로그인 화면에서 로그인을 하고 앱의 컨텐츠로 진입하는 것이라면, 그것이 자연스운 경로이므로 `내비게이션`일 것이다.  
@@ -418,8 +420,7 @@ func updateDateLabelFromDatePicker(_ sender: UIDatePicker) {
 2. 회원가입 화면내에서의 화면 이동은?  
     회원가입 화면이 두개의 화면으로 이루어지며 첫 화면에서 아이디, 비밀번호 등을 입력 후 더 자세한 개인정보를 입력하는 화면으로 이동한다. 이때 두 화면은 서로 관계있는 화면의 컨텐츠가 동일한 레벨이거나 더 깊은 레벨의 컨텐츠 이므로 `내비게이션`으로 구현해야 한다.
 
-
-#### 스토리보드 구현
+#### - 결론
 
 ![](./Images/Storyboard.png)
 
