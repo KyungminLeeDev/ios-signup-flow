@@ -26,12 +26,9 @@
 3. [배운 내용](#배운-내용)
     - [if vs guard](#if-vs-guard)
 4. [고민한 내용](#고민한-내용)
+    - [싱글턴 패턴의 인스턴스 이름](#싱글턴-패턴의-인스턴스-이름)
     - [모달 vs 내비게이션](#모달-vs-내비게이션)
     - [키보드 내리는 방법 선택](#키보드-내리는-방법-선택)
-    - 싱글턴의 인스턴스 이름
-5. 트러블 슈팅
-    - 텍스트필드 권장 암호?!
-
 
 <br><br><br>
 
@@ -390,6 +387,47 @@ guard를 사용한다면 `password.isEmpty`를 한번 뒤집어야 하니 제대
 
 ## 고민한 내용
 
+### 싱글턴 패턴의 인스턴스 프로퍼티 이름
+
+### - 배경
+
+사용자 정보 저장할 타입을 싱글턴 패턴으로 구현할 때, 인스턴스를 저장할 프로퍼티의 이름을 무엇으로 할지 고민했다.
+
+처음에는 별 생각없이 보통 공유라는 의미의 `shared`를 사용하는 것 같아 그대로 사용하려 했지만,  
+학습활동시간에 싱글턴 인스턴스의 이름을 shared, default 등 자주 사용되는 이름은 보안에 취약할 수 있어서  
+회사나 팀마다 다른 용어를 사용하는 경우가 있다는 것을 알게 되어 고민해보기로 했다. 
+
+### - 과정
+
+먼저 iOS 라이브러리의 싱글턴 인스턴스이름을 찾아보았다
+
+~~~swift
+UserDefaults.standard
+UIApplication.shared
+FileManager.default
+NotificationCenter.default
+~~~
+
+shared, default 등의 예상할 수 있는 단어가 많이 쓰이는데 이건 보안에 관계가 없나? 
+이건 어차피 iOS 지원하는 라이브러리이고, 해커라면 개발자가 작성한 코드에 관심이 있을 것이므로 다르다는 것인가?
+
+정확히는 모르겠지만 자주 사용하는 것이 아닌 단어를 생각해 보기로 했다.
+
+### - 결론
+
+유저정보 `카드`라는 의미로 `card`라고 결정했다.
+최대한 유저정보와 관련 없는 단어이면서 조금은 관련이 있어야 한다는 생각으로 지었는데, 
+지금 생각해 보니 만약 다른 개발자가 본다면 전혀 유추할 수 없는 단어라고도 생각된다.
+현업에서는 어떻게 작명하는지 나중에 꼭 물어보고 싶다.
+
+- 해당 [PR](https://github.com/yagom-academy/ios-signup-flow/pull/13)
+![](./Images/PR_Step1.png)
+
+[👆목차로 가기](#목차)
+<br><br><br>
+
+
+
 ### 모달 vs 내비게이션
 
 로그인 화면에서 회원가입 화면으로의 화면 이동을 구현할 때, 모달로 해야할까? 내비게이션으로 해야할까?
@@ -481,6 +519,7 @@ UIResponder의 touchesBegan(_:with:)은 해당 객체에 터치가 시작되면 
 글렌과 두 방식을 비교하고 정리했다.
 
 | 장단점 | Gesture Recognizer | touchesBegan |
+| ------ | ------------------ | ------------ | 
 | 장점   | 다양한 터치 제스처를 처리할 수 있다 | 간단하게 구현 가능, Gesture Recognizer 보다 인식 빠름 |
 | 단점   | touchesBegan보다는 인식이 느리다 (두 방법을 동시에 구현한 경우 touchesBegan이 더 먼저 호출된다) | Gesture Recognizer 보다 인식가능한 제스처가 적다 |
 
@@ -490,8 +529,11 @@ UIResponder의 touchesBegan(_:with:)은 해당 객체에 터치가 시작되면 
 프로젝트의 해당 기능에서는 다른 제스처가 필요하지 않아 터치만 인식하면 되고,  
 Gesture Recognizer 보다 인식이 빠르고 구현이 간단해서 이해하기 쉬운 코드라고 판단했다.
 
-해당 [PR](https://github.com/yagom-academy/ios-signup-flow/pull/18)
+- 해당 [PR](https://github.com/yagom-academy/ios-signup-flow/pull/18)
 ![](./Images/PR_Step2.png)
 
 [👆목차로 가기](#목차)
 <br><br><br>
+
+
+
