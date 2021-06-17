@@ -25,9 +25,8 @@
     - [Navigaion Controller 추가하기](#Navigaion-Controller-추가하기)
 3. [배운 내용](#배운-내용)
     - [if vs guard](#if-vs-guard)
-    - 코드의 공백이나 개행에도 의미가 있어야 한다
 4. [고민한 내용](#고민한-내용)
-    - 모달 vs 내비게이션
+    - [모달 vs 내비게이션](#모달-vs-내비게이션)
     - 키보드 내리는 방법 선택
     - 싱글턴의 인스턴스 이름
 5. 트러블 슈팅
@@ -349,7 +348,30 @@ func updateDateLabelFromDatePicker(_ sender: UIDatePicker) {
 
     나는 로직상 잘못된 부분이나 미리 걸러야 하는 부분에 guard를 사용한다는 나름이 규칙을 정했지만,
     이것을 지키려다 보니 가독성을 해치는 경우를 발견할 수 있었다.
-- 공식문서 확인 
+
+    예를 들면 조건문의 결과가 주로 false가 되는 상황이라면 guard가 더 이해하기 어렵다.  
+    guard에는 true 조건을 작성해야하기에 이를 맞추기려면 Bool값을 반전해서 한번 더 생각하기에 그렇다.  
+
+    ~~~swift
+    // if-else
+    // 패스워드가 비어있다면 false
+    if password.isEmpty  { 
+        return false
+    } else {
+        return true
+    }
+
+    // guard-else
+    // 패스워드가 비어있지 않다면?! false
+    guard !password.isEmpty else {
+        return false
+    }
+    return true
+    ~~~
+
+    guard를 사용한다면 `password.isEmpty`를 한번 뒤집어야 하니 제대로 이해하기 위해 한번 더 생각해야하고, 이부분에서 실수했던 기억이 있다.
+
+- 공식문서 확인  
     [Swift Language Guide - Control Flow](https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html) 문서의 `Early Exit` 토픽에서 guard 사용 관련 내용을 확인할 수 있다.
     > Using a guard statement for requirements improves the readability of your code, compared to doing the same check with an if statement. It lets you write the code that’s typically executed without wrapping it in an else block, and it lets you keep the code that handles a violated requirement next to the requirement.  
       
@@ -365,3 +387,47 @@ func updateDateLabelFromDatePicker(_ sender: UIDatePicker) {
 
 
 ## 고민한 내용
+
+### 모달 vs 내비게이션
+
+로그인 화면에서 회원가입 화면으로의 화면 이동을 구현할 때, 모달로 해야할까? 내비게이션으로 해야할까?
+
+먼저 H.I.G 문서를 통해 모달과 내비게이션에 대해 알아보았다.
+
+#### [H.I.G - Modality](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/modality/)
+
+> Modality is a design technique that presents content in a temporary mode that’s separate from the user's previous current context and requires an explicit action to exit. Presenting content modally can:
+- Help people focus on a self-contained task or set of closely related options
+- Ensure that people receive and, if necessary, act on critical information
+
+모달은 이전의 컨텍스트와는 별개로 임시적인 컨텐츠를 보여줄때 사용하는 방법이라고 해석된다. 
+즉, 현재의 맥락과는 다르게 일시적으로 사용자의 주의를 끌어서 스스로 작업해야하는 컨텐츠를 보여줄대 사용되는 것 같다.
+
+#### [H.I.G - Navigation](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/navigation/)
+
+> People tend to be unaware of an app’s navigation until it doesn’t meet their expectations. Your job is to implement navigation in a way that supports the structure and purpose of your app without calling attention to itself. Navigation should feel natural and familiar, and shouldn’t dominate the interface or draw focus away from content. In iOS, there are three main styles of navigation.
+
+사용자가 자연스럽게 앱의 컨텐츠 흐름을 느끼도록 내비게이션 되야 한다고 설명하고 있다.
+즉, 앱의 구조에 맞게 컨텐츠의 맥락에 따라 더 깊은 컨텐츠 화면으로 들어가거나 나오는게 자연스럽게 이어저야 한다는 것이다.
+
+#### 고민
+
+1. 로그인 화면에서 회원가입 화면으로 이동은?  
+    로그인 화면에서 로그인을 하고 앱의 컨텐츠로 진입하는 것이라면, 그것이 자연스운 경로이므로 `내비게이션`일 것이다.  
+    하지만 로그인 화면에서 회원가입 화면으로의 이동은 앱의 흐름과 별개로 서비스에 가입해야 한다는 새롭고 임시적인 내용이므로 다른 화면이며, 화면의 변환도 이를 인지할 수 있도록 `모달`로 구현해야 맞다고 생각했다.
+2. 회원가입 화면내에서의 화면 이동은?  
+    회원가입 화면이 두개의 화면으로 이루어지며 첫 화면에서 아이디, 비밀번호 등을 입력 후 더 자세한 개인정보를 입력하는 화면으로 이동한다. 이때 두 화면은 서로 관계있는 화면의 컨텐츠가 동일한 레벨이거나 더 깊은 레벨의 컨텐츠 이므로 `내비게이션`으로 구현해야 한다.
+
+
+#### 스토리보드 구현
+
+![](./Images/Storyboard.png)
+
+스토리보드로 모달과 내비게이션을 활용하여 구현했다.  
+회원가입 화면은 내비게이션 컨트롤러를 삽입하여 자동으로 내비게이션을 구현했고, 로그인 화면에서 내비게이션 컨트롤러를 모달로 띄우도록 구현했다.  
+  
+화면의 흐름: Sign Up 버튼을 누르면 모달로 회원가입 화면이 띄워진다.  
+아이디 비밀번호 등의 정보 입력후 다음 버튼을 누르면 내비게이션으로 다음 개인정보 입력 화면으로 이동한다.
+
+[👆목차로 가기](#목차)
+<br><br><br>
