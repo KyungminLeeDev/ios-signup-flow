@@ -27,7 +27,7 @@
     - [if vs guard](#if-vs-guard)
 4. [고민한 내용](#고민한-내용)
     - [모달 vs 내비게이션](#모달-vs-내비게이션)
-    - 키보드 내리는 방법 선택
+    - [키보드 내리는 방법 선택](#키보드-내리는-방법-선택)
     - 싱글턴의 인스턴스 이름
 5. 트러블 슈팅
     - 텍스트필드 권장 암호?!
@@ -429,6 +429,69 @@ guard를 사용한다면 `password.isEmpty`를 한번 뒤집어야 하니 제대
   
 화면의 흐름: Sign Up 버튼을 누르면 모달로 회원가입 화면이 띄워진다.  
 아이디 비밀번호 등의 정보 입력후 다음 버튼을 누르면 내비게이션으로 다음 개인정보 입력 화면으로 이동한다.
+
+[👆목차로 가기](#목차)
+<br><br><br>
+
+
+### 키보드 내리는 방법 선택
+
+#### - 배경
+
+`기타 영역 터치 시 키보드 내리기`기능을 각자 구현하고 코드 리뷰를 진행했는데, 나와 글렌이 완전히 다른 방식을 사용했다.
+내가 사용한 방법 외에 다른 방법이 있는지도 몰랐는데, 글렌이 사용한 방식이 더 간단하게 구현한 코드라서 흥미로웠다.
+
+#### - Gesture Recognizer 사용하는 방법
+
+~~~swift 
+override func viewDidLoad() {
+    super.viewDidLoad()
+    setupGestureRecognizer()
+}
+
+func setupGestureRecognizer() {
+    let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tappedView(_:)))
+    view.addGestureRecognizer(tapGesture)
+}
+
+@IBAction func tappedView(_ sender: UITapGestureRecognizer) {
+    view.endEditing(true)
+}
+~~~
+
+내가 구현한 방식은 Gesture Recognizer를 사용한 것이다.
+ViewController의 view에 UITapGestureRecognizer를 추가해서 입력 UI가 아니라 view가 터치되면 veiw.endEditing()으로 키보드를 내리도록 구현했다.
+
+#### - UIResponder - touchesBegan(_:with:) 사용하는 방법
+
+~~~swift
+override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    super.touchesBegan(touches, with: event)
+    
+    view.endEditing(true)
+}
+~~~
+
+글렌은 위 코드만으로 기능 구현을 했다.  
+UIResponder의 touchesBegan(_:with:)은 해당 객체에 터치가 시작되면 호출된다.  
+여기서 해당 객체는 ViewController이므로 view가 터치되면 veiw.endEditing()으로 키보드를 내린다.
+
+#### - Gesture Recognizer vs touchesBegan
+
+글렌과 두 방식을 비교하고 정리했다.
+
+| 장단점 | Gesture Recognizer | touchesBegan |
+| 장점   | 다양한 터치 제스처를 처리할 수 있다 | 간단하게 구현 가능, Gesture Recognizer 보다 인식 빠름 |
+| 단점   | touchesBegan보다는 인식이 느리다 (두 방법을 동시에 구현한 경우 touchesBegan이 더 먼저 호출된다) | Gesture Recognizer 보다 인식가능한 제스처가 적다 |
+
+#### - 결론
+
+논의 결과 touchesBegan 방식을 사용하기로 했다.
+프로젝트의 해당 기능에서는 다른 제스처가 필요하지 않아 터치만 인식하면 되고,  
+Gesture Recognizer 보다 인식이 빠르고 구현이 간단해서 이해하기 쉬운 코드라고 판단했다.
+
+해당 [PR](https://github.com/yagom-academy/ios-signup-flow/pull/18)
+![](./Images/PR_Step2.png)
 
 [👆목차로 가기](#목차)
 <br><br><br>
