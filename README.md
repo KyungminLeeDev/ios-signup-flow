@@ -16,18 +16,17 @@
     - [Git & GitHub으로 협업하기](#Git--GitHub으로-협업하기)
     - [팀 그라운드 룰](#팀-그라운드-룰)
     - [TWL](#This-week-We-Learned)
-2. [학습 내용](#1-학습-내용)
+2. [학습 내용](#학습-내용)
     - [싱글턴 패턴으로 데이터 공유](#싱글턴-패턴으로-데이터-공유)
     - [Image View 터치 시 Image Picker 띄우기](#Image-View-터치-시-Image-Picker-띄우기)
     - [Image Picker Controller로 사진첩에서 사진 가져오기](#Image-Picker-Controller로-사진첩에서-사진-가져오기)
     - [Date Picker로 날짜 정보 가져오기](#Date-Picker로-날짜-정보-가져오기)
     - [Segue로 모달 화면 띄우기](#Segue로-모달-화면-띄우기)
     - [Navigaion Controller 추가하기](#Navigaion-Controller-추가하기)
-3. [배운 내용](#2-배운-내용)
-    - 키보드 넘버패드일때 악세서리뷰로 done버튼 만들기
-    - if vs guard
+3. [배운 내용](#배운-내용)
+    - [if vs guard](#if-vs-guard)
     - 코드의 공백이나 개행에도 의미가 있어야 한다
-4. [고민한 내용](#3-고민한-내용)
+4. [고민한 내용](#고민한-내용)
     - 모달 vs 내비게이션
     - 키보드 내리는 방법 선택
     - 싱글턴의 인스턴스 이름
@@ -317,7 +316,56 @@ func updateDateLabelFromDatePicker(_ sender: UIDatePicker) {
 [👆목차로 가기](#목차)
 <br><br><br>
 
+
+
 ## 배운 내용
+
+### if vs guard
+
+#### 배경
+
+Swift의 조건문에는 다른 언어와 다르게 `if`에 더해서 `guard`가 있다.  
+그러면 어떤 상황에 무엇을 사용하는 것이 좋을까?  
+  
+나는 if, guard를 선택하는 나름의 기준이 있었다. 
+`guard`라는 명칭이 방어하고 미리 막는 느낌이 강해서, 로직상 잘못된 부분이나 미리 걸러야 하는 것을 처리할 때 guard를 주로 사용했다.
+
+#### [코드 리뷰 코멘트](https://github.com/yagom-academy/ios-signup-flow/pull/26/files/56489274eea82e0135abe4be2d276a6eb88f91cd#r535812747)
+
+코드 리뷰에서 아래 코멘트를 받고 어떤 상황에서 if 또는 guard를 사용할지 다시 생각해 보았다.
+
+![](./Images/CodeReview_IfGuard.png)
+
+#### 개선
+
+수정한 코드 예시
+~~~swift
+private var isValidProfileImage: Bool {
+    if let _ = profileImage.image {
+        return true
+    } else {
+        return false
+    }
+}
+~~~
+
+[피드백 코멘트](https://github.com/yagom-academy/ios-signup-flow/pull/26#issuecomment-738673080)
+![](./Images/ICodeReview_IfGuard_Answer.png)
+
+#### 배운 점
+
+if or guard 선택할 때, 만약 회사나 팀에 규칙 있다면 그 기준을 지키면 될 것이다.
+하지만 규칙이 없다면 개인의 규칙을 만들어야 할 것이고,  
+초심자에게 그 기준은 코드가 좀 더 자연스럽게 읽힐 수 있는 방향으로 하는 것이 좋을 것 같다. 
+
+나는 류직상 잘못된 부분이나 미리 걸러야 하는 부분에 guard를 사용한다는 나름이 규칙을 정했지만,
+이것을 지키려다보니 가독성을 해치는 경우를 발견할 수 있었다.
+
+
+
+[👆목차로 가기](#목차)
+<br><br><br>
+
 
 
 ## 고민한 내용
